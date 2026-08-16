@@ -99,7 +99,7 @@ object ShowUtils {
      */
     fun getRunningShows(category: String, name: String): HashSet<EffectShow> {
         return runningShows
-            .filter { it.key.first == category && it.key.second == name } // Filter by category and name
+            .filter { it.key.first == category && it.key.second == name.replace(".yml", "") } // Filter by category and name
             .values // Get the corresponding HashSets
             .flatten() // Flatten them into a single list
             .toHashSet() // Convert to a HashSet
@@ -109,17 +109,17 @@ object ShowUtils {
      * Add a show to the currently running shows
      */
     fun addRunningShow(category: String, name: String, effectShow: EffectShow) {
-        if(runningShows.containsKey(Pair(category, name)))
-            runningShows[Pair(category, name)]?.add(effectShow)
+        if(runningShows.containsKey(Pair(category, name.replace(".yml", ""))))
+            runningShows[Pair(category, name.replace(".yml", ""))]?.add(effectShow)
         else
-            runningShows[Pair(category, name)] = hashSetOf(effectShow)
+            runningShows[Pair(category, name.replace(".yml", ""))] = hashSetOf(effectShow)
     }
 
     /**
      * Remove a show from the currently running shows
      */
     fun removeRunningShow(category: String, name: String, effectShow: EffectShow) {
-        runningShows[Pair(category, name)]?.remove(effectShow)
+        runningShows[Pair(category, name.replace(".yml", ""))]?.remove(effectShow)
     }
 
     fun getDroppedItems(): HashSet<Item>{
