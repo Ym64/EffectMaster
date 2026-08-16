@@ -39,7 +39,7 @@ class ConsoleCommand : Effect() {
         val list = ArrayList<ParameterLike>()
         list.add(Parameter(
             "Command",
-            "say EffectMaster is the coolest plugin!",
+            "say This is the default Console Command output, change this! (Sent by EffectMaster)",
             "The command to execute, without a slash in front. For example \"say Hello everyone!\".",
             {it},
             { true })
